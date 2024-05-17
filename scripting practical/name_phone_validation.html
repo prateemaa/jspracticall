@@ -1,0 +1,50 @@
+ <!-- To validate a form with name and phone number fields in JavaScript, you can use the following rules:
+    
+Name: The name should contain only letters and possibly spaces, and be between 1 and 50 characters long.
+Phone Number: The phone number should contain only digits and be exactly 10 digits long.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+<script>
+function validateForm() {
+    var name = document.getElementById('name').value;
+    var phoneNumber = document.getElementById('phone').value;
+
+    var nameRegex = /^[a-zA-Z\s]{1,50}$/;
+    var phoneRegex = /^\d{10}$/;
+
+    if (!nameRegex.test(name)) {
+        alert("Please enter a valid name.");
+        return false;
+    }
+
+    if (!phoneRegex.test(phoneNumber)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return false;
+    }
+
+    // Form is valid
+    return true;
+}
+</script>
+</head>
+<body>
+
+<h2>Form Validation</h2>
+
+<form onsubmit="return validateForm()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" required>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
